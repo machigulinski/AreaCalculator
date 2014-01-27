@@ -16,7 +16,10 @@ public class AreaCalculator {
     
     public AreaCalculator() {}
     
-    public String calculateArea(double width, double height) {
+    public String calculateArea(double width, double height){
+	if (width <= 0 || height <= 0) {
+	    throw new NullPointerException("Please insert dimensions");	
+	}
 	double area = width * height;
 	return df.format(area);
     

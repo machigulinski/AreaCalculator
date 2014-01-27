@@ -8,8 +8,6 @@ package area.calculator.controller;
 
 import area.calculator.model.AreaCalculator;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,29 +66,31 @@ public class AreaCalculatorController extends HttpServlet {
 	    throws ServletException, IOException {
 	
 	 response.setContentType("text/html");
+	 try {
+	    // parameters are name attributes in view pages
+	    // Here we're retrieving form content from index.html
+	    Double width  = Double.parseDouble(request.getParameter("width"));
+	    Double height  = Double.parseDouble(request.getParameter("height"));
 
-        // parameters are name attributes in view pages
-        // Here we're retrieving form content from form.html
-        Double width  = Double.parseDouble(request.getParameter("width"));
-	Double height  = Double.parseDouble(request.getParameter("height"));
-        
-        
-        // Create a new instance of a model object
-        // For some applications, we would not want to create a new one each time.
-        AreaCalculator ac = new AreaCalculator();
-        // Always a good idea to trim and/or validate input data
-        String area = ac.calculateArea(width, height);
 
-        // Parameters are read only Request object properties, but attributes
-        // are read/write. We can use attributes to store data for use on
-        // another page.
-        request.setAttribute("area", area);
-        
-        // This object lets you forward both the request and response
-        // objects to a destination page
-        RequestDispatcher view =
-                request.getRequestDispatcher(RESULT_PAGE);
-        view.forward(request, response);
+	    // Create a new instance of a model object
+	    // For some applications, we would not want to create a new one each time.
+	    AreaCalculator ac = new AreaCalculator();
+	    // Always a good idea to trim and/or validate input data
+	    String area = ac.calculateArea(width, height);
+
+	    // Parameters are read only Request object properties, but attributes
+	    // are read/write. We can use attributes to store data for use on
+	    // another page.
+	    request.setAttribute("area", area);
+
+	    // This object lets you forward both the request and response
+	    // objects to a destination page
+	    RequestDispatcher view =
+		    request.getRequestDispatcher(RESULT_PAGE);
+	    view.forward(request, response);
+	} catch (NullPointerException | NumberFormatException | ServletException ex) {}
+	
     }
 
     /**
