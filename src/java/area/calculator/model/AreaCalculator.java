@@ -25,4 +25,29 @@ public class AreaCalculator {
     
     }
     
+    public String getUnit (String unit) {
+	
+	String u = null;
+	switch (unit) {
+	    case "inches":
+		u = "inches";
+		break;
+	    case "feet":
+		u = "feet";
+		break;
+	    case "yards":
+		u = "yards";
+		break;
+	    case "centimeters":
+		u = "centimeters";
+		break;
+	    case "meters":
+		u = "meters";
+		break;
+	}
+	
+		return u;
+	}
+   
+    
 }

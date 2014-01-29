@@ -9,6 +9,13 @@ and open the template in the editor.
 	<title>mvc area calculator</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
+	
+	<style>
+	    
+	    .form_fields {width: 30em;}
+	    
+	    
+	</style>
     </head>
     <body>
 	
@@ -29,7 +36,16 @@ and open the template in the editor.
 		   <input type="text" name="height" id="height" value="" />
 
 		</p>  
-
+		<p>
+		    <select id="unit" name="unit" size ="1">
+			<option value="inches"> inches </option>
+			<option value="feet"> feet </option>
+			<option value="yards"> yards </option>
+			<option value="centimeters">centimeters</option>
+			<option value="meters">meters</option>
+		    </select>
+		    
+		</p> 
 		<p>
 		    <input type="submit" name="calc_btn" id="calc_btn" value="CALCULATE" />
 		</p>
